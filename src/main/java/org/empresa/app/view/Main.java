@@ -15,16 +15,15 @@ public class Main {
                 Persistence.createEntityManagerFactory("$objectdb/db/a1.odb");
 
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        Estudiante estudiante = new Estudiante("Jhon Z", "Gomez", 20, "001-0000000-0", LocalDate.of(2022, 1, 1), "Ing. Sistemas", "2022-0000");
-        em.persist(estudiante);
-        em.getTransaction().commit();
-        TypedQuery<Estudiante> query = em.createQuery("SELECT est FROM Estudiante est", Estudiante.class);
+
+        TypedQuery<Estudiante> query = em.createQuery("SELECT est FROM Estudiante est WHERE est.", Estudiante.class);
+        query.setParameter("fechaLimite", LocalDate.of(2002, 1, 1));
 
         List<Estudiante> results = query.getResultList();
         for (Estudiante est : results) {
             System.out.println(est);
         }
+
         // Close the database connection:
         em.close();
         emf.close();
