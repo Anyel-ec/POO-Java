@@ -1,7 +1,10 @@
 package org.empresa.app.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Estudiante extends Persona{
     private String carrera;
     private String matricula;

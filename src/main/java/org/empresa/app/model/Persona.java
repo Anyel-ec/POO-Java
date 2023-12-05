@@ -1,7 +1,8 @@
 package org.empresa.app.model;
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.time.LocalDate;
-
 abstract class Persona {
     private String nombre;
     private String apellido;
